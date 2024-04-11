@@ -27,9 +27,6 @@
 \def\mainfontsize{11pt}
 \def\mainfontface{Helvetica}
 
-\DeclareOption{calibri}{%
-  \def\mainfontface{Calibri}
-}
 
 \ProcessOptions\relax
 
@@ -77,14 +74,14 @@
 %--------------------------------------------------------------------------------
 %                                    Constants                                  -
 %--------------------------------------------------------------------------------
-\def\afterheaderspace{3pt}
+\def\afterheaderspace{4.75pt}
 \def\beforesectionheaderspace{4.75pt}
 \def\sectionheadermargin{6pt}
 \def\aftersectionheaderspace{-4pt}
 \def\sectionheaderhrlueheight{0.5pt}
-\def\aftersinglelinesubsectionheaderspace{-6pt}
+\def\aftersinglelinesubsectionheaderspace{-20pt}
 \def\afterdoublelinesubsectionheaderspace{0pt}
-\def\aftermultilinesubsectionheaderspace{-6pt}
+\def\aftermultilinesubsectionheaderspace{100pt}
 \def\afteremptysubsectionheaderspace{3pt}
 \def\subsectionmargin{9pt}
 \def\aftersubsectionspace{3pt}
@@ -165,8 +162,9 @@
 \newtoggle{centertitledefined}
 \newtoggle{righttitledefined}
 
+
 \newenvironment{cvsubsection}[4][1]{
-	\setlength{\tabcolsep}{0pt}  % <-- Add this line
+	\setlength{\tabcolsep}{0pt}
 	\notblank{#2}{\toggletrue{lefttitledefined}}{}
 	\notblank{#3}{\toggletrue{centertitledefined}}{}
 	\notblank{#4}{\toggletrue{righttitledefined}}{}
