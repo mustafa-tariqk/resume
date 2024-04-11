@@ -22,8 +22,10 @@
 \ProvidesClass{mcdowellcv}[2015/12/15 v1.1.0 McDowell CV class]
 
 % Set up the fonts according to options
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 \def\mainfontsize{11pt}
-\def\mainfontface{Times New Roman}
+\def\mainfontface{Helvetica}
 
 \DeclareOption{calibri}{%
   \def\mainfontface{Calibri}
@@ -35,7 +37,7 @@
 \LoadClass[letterpaper,\mainfontsize]{article} 
 
 % Set document margins
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} 
+\usepackage[margin=0.5in]{geometry}
 
 % Set font face
 \usepackage{fontspec}
@@ -110,7 +112,7 @@
 \name{}
 
 \newcommand\printname{
-	\textbf{\LARGE\textls[110]{\textsc{\@name}}}
+	\textbf{\LARGE{\textsc{\@name}}}
 }
 
 \makeatother
@@ -130,7 +132,7 @@
 \makeatletter
 \newcommand\makeheader{
 	\begin{center}
-		\begin{tabu} to 1\textwidth { X[l,m] X[2,c,m] X[r,m] }
+		\begin{tabu} to 1\textwidth { X[l,m] X[c,m] X[r,m] }
 			\printaddress & \printname & \printcontacts \\
 		\end{tabu}	
 	\end{center}
@@ -164,11 +166,12 @@
 \newtoggle{righttitledefined}
 
 \newenvironment{cvsubsection}[4][1]{
+	\setlength{\tabcolsep}{0pt}  % <-- Add this line
 	\notblank{#2}{\toggletrue{lefttitledefined}}{}
 	\notblank{#3}{\toggletrue{centertitledefined}}{}
 	\notblank{#4}{\toggletrue{righttitledefined}}{}
 	\ifboolexpr{togl {lefttitledefined} or togl {centertitledefined} or togl {righttitledefined}}{
-		\begin{tabu} to 1\textwidth { X[l,p] X[c,p] X[r,p] }
+		\begin{tabu} to 1\textwidth { X[1,l,p] X[1.1,c,p] X[1,r,p] }
 			\textbf{#2} & \textbf{#3} & \textbf{#4} \\
 		\end{tabu}
 		% Add space according to the specidied number of lines
